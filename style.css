@@ -1,0 +1,23 @@
+.producto-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+
+  .carrito-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .carrito-item {
+    margin-bottom: 5px;
+  }
+  

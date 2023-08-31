@@ -55,21 +55,20 @@ let indumentariaDeportiva = [
         stock: 58,
         imagen: "imagen2.jpg"
       },
-    // Agrega más elementos según tus necesidades
   ];
+
+  let productosContainer = document.getElementById("productos-container");
+  let carritoContainer = document.getElementById("carrito-container");
+  let totalContainer = document.getElementById("total-container");
   
-  const productosContainer = document.getElementById("productos-container");
-  const carritoContainer = document.getElementById("carrito-container");
-  const totalContainer = document.getElementById("total-container");
-  
-  const carrito = [];
+  let carrito = [];
   
   function actualizarCarrito() {
     carritoContainer.innerHTML = "";
     let total = 0;
   
     carrito.forEach(producto => {
-      const carritoItem = document.createElement("div");
+      let carritoItem = document.createElement("div");
       carritoItem.className = "carrito-item";
       carritoItem.textContent = `${producto.nombre} - Precio: $${producto.precio.toFixed(2)}`;
       carritoContainer.appendChild(carritoItem);
@@ -80,7 +79,7 @@ let indumentariaDeportiva = [
   }
   
   function agregarAlCarrito(index) {
-    const producto = indumentariaDeportiva[index];
+    let producto = indumentariaDeportiva[index];
     if (producto.stock > 0) {
       carrito.push(producto);
       producto.stock--;
@@ -102,7 +101,7 @@ let indumentariaDeportiva = [
   }
   
   indumentariaDeportiva.forEach((producto, index) => {
-    const productoCard = document.createElement("div");
+    let productoCard = document.createElement("div");
     productoCard.className = "producto-card";
     productoCard.innerHTML = `
       <img src="${producto.imagen}" alt="${producto.nombre}" />
@@ -117,3 +116,25 @@ let indumentariaDeportiva = [
   
   cargarDesdeStorage();
   
+  // ... (código anterior)
+
+const finalizarCompraButton = document.createElement("button");
+finalizarCompraButton.textContent = "Finalizar Compra";
+finalizarCompraButton.addEventListener("click", finalizarCompra);
+
+function finalizarCompra() {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+    return;
+  }
+
+  const totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
+  alert(`¡Compra realizada! Total: $${totalCompra.toFixed(2)}`);
+  carrito.length = 0; // Vaciar el carrito
+  actualizarCarrito();
+  guardarEnStorage();
+}
+
+carritoContainer.appendChild(finalizarCompraButton);
+
+// ... (código posterior)
