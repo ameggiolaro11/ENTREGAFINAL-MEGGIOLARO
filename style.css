@@ -1,23 +1,42 @@
-.producto-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
+#productos-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tarjetaProducto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
     width: 200px;
-    display: inline-block;
-    vertical-align: top;
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 20px;
   }
   
-
-  .carrito-container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 20px;
-    width: 300px;
-    display: inline-block;
-    vertical-align: top;
+  div.imagen {
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   
-  .carrito-item {
-    margin-bottom: 5px;
+  #carrito-container {
+    flex-direction: column;
+    min-height: 300px;
+    border: 1px solid black;
   }
   
+  .tarjetaCarrito {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .oculto {
+    display: none!important;
+  }

@@ -4,7 +4,7 @@ let indumentariaDeportiva = [
       categoria: "Ropa",
       precio: 29.999,
       stock: 10,
-      imagen: "imagen1.jpg"
+      imagen: "../images/boca.jpeg"
     },
     {
       nombre: "Botines TOTAL 90",
@@ -100,6 +100,7 @@ let indumentariaDeportiva = [
     }
   }
   
+  
   indumentariaDeportiva.forEach((producto, index) => {
     let productoCard = document.createElement("div");
     productoCard.className = "producto-card";
@@ -114,27 +115,25 @@ let indumentariaDeportiva = [
     productosContainer.appendChild(productoCard);
   });
   
+  function finalizarCompra() {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+      return;
+    }
+  
+    let totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
+    alert(`¡Compra realizada! Total: $${totalCompra.toFixed(2)}`);
+    carrito.length = 0; // Vaciar el carrito
+    actualizarCarrito();
+    guardarEnStorage();
+  }
+  
+  carritoContainer.appendChild(finalizarCompraButton);
   cargarDesdeStorage();
   
-  // ... (código anterior)
-
-const finalizarCompraButton = document.createElement("button");
+let finalizarCompraButton = document.createElement("button");
 finalizarCompraButton.textContent = "Finalizar Compra";
 finalizarCompraButton.addEventListener("click", finalizarCompra);
 
-function finalizarCompra() {
-  if (carrito.length === 0) {
-    alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
-    return;
-  }
 
-  const totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
-  alert(`¡Compra realizada! Total: $${totalCompra.toFixed(2)}`);
-  carrito.length = 0; // Vaciar el carrito
-  actualizarCarrito();
-  guardarEnStorage();
-}
 
-carritoContainer.appendChild(finalizarCompraButton);
-
-// ... (código posterior)
