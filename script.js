@@ -11,35 +11,35 @@ let indumentariaDeportiva = [
       categoria: "Calzado",
       precio: 79.000,
       stock: 35,
-      imagen: "../images/boca.jpeg"
+      imagen: "../images/total90.jpg"
     },
     {
         nombre: "Camiseta San Lorenzo",
         categoria: "Ropa",
         precio: 29.999,
         stock: 25,
-        imagen: "../images/boca.jpeg"
+        imagen: "../images/casla.jpg"
     },
     {
         nombre: "Camiseta Banfield",
         categoria: "Ropa",
         precio: 29.999,
         stock: 51,
-        imagen: "../images/boca.jpeg"
+        imagen: "../images/banfield.jpg"
       },
       {
         nombre: "Botines papi fulbo",
         categoria: "Calzado",
         precio: 19.000,
         stock: 5,
-        imagen: "../images/boca.jpeg"
+        imagen: "../images/papi.jpg"
       },
       {
         nombre: "Short Boca Juniors",
         categoria: "Ropa",
         precio: 29.000,
         stock: 17,
-        imagen: "../images/boca.jpeg"
+        imagen: "../images/boquita.jpg"
       },
       {
         nombre: "Ojotas D10S",
@@ -53,7 +53,7 @@ let indumentariaDeportiva = [
         categoria: "Ropa",
         precio: 109.000,
         stock: 58,
-        imagen: "../images/boca.jpeg"
+        imagen: "../images/argentina.jpg"
       },
   ];
   let productosContainer = document.getElementById("productos-container");
@@ -62,14 +62,14 @@ let indumentariaDeportiva = [
   let finalizarCompraButton = document.getElementById("finalizar-compra");
   let mensajeContainer = document.getElementById("mensaje-container");
 
-const carrito = [];
+let carrito = [];
 
 function actualizarCarrito() {
   carritoContainer.innerHTML = "";
   let total = 0;
 
   carrito.forEach(producto => {
-    const carritoItem = document.createElement("div");
+    let carritoItem = document.createElement("div");
     carritoItem.className = "carrito-item";
     carritoItem.textContent = `${producto.nombre} - Precio: $${producto.precio.toFixed(2)}`;
     carritoContainer.appendChild(carritoItem);
@@ -80,7 +80,7 @@ function actualizarCarrito() {
 }
 
 function agregarAlCarrito(index) {
-  const producto = indumentariaDeportiva[index];
+  let producto = indumentariaDeportiva[index];
   if (producto.stock > 0) {
     carrito.push(producto);
     producto.stock--;
@@ -95,9 +95,11 @@ function finalizarCompra() {
     return;
   }
 
-  const totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
+  let totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
   mensajeContainer.textContent = "¡GRACIAS POR COMPRAR EN RASH SPORTS!";
-  carrito.length = 0; // Vaciar el carrito
+  mensajeContainer.classList.remove("oculto"); 
+  finalizarCompraButton.classList.add("oculto"); 
+  carrito.length = 0; 
   actualizarCarrito();
   guardarEnStorage();
 }
@@ -111,11 +113,14 @@ function cargarDesdeStorage() {
   if (carritoGuardado) {
     carrito.push(...JSON.parse(carritoGuardado));
     actualizarCarrito();
+    if (carrito.length > 0) {
+        finalizarCompraButton.classList.remove("oculto"); 
+      }
+    }
   }
-}
-
+  
 indumentariaDeportiva.forEach((producto, index) => {
-    const productoCard = document.createElement("div");
+    let productoCard = document.createElement("div");
     productoCard.className = "producto-card";
     productoCard.innerHTML = `
       <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen" />
@@ -132,4 +137,4 @@ indumentariaDeportiva.forEach((producto, index) => {
   
   cargarDesdeStorage();
   
-  finalizarCompraButton.addEventListener("click", finalizarCompra);
+ finalizarCompraButton.addEventListener("click", finalizarCompra);
