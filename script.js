@@ -65,7 +65,6 @@ let indumentariaDeportiva = [
 let carrito = [];
 
 function actualizarCarrito() {
-  carritoContainer.innerHTML = "";
   let total = 0;
 
   carrito.forEach(producto => {
