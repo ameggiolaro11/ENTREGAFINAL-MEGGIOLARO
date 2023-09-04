@@ -88,6 +88,19 @@ function agregarAlCarrito(index) {
   }
 }
 
+let limpiarCarritoButton = document.getElementById("limpiar-carrito");
+
+function limpiarCarrito() {
+  carrito.length = 0;
+  actualizarCarrito();
+  guardarEnStorage();
+  finalizarCompraButton.classList.add("oculto");
+  mensajeContainer.classList.add("oculto"); 
+}
+
+limpiarCarritoButton.addEventListener("click", limpiarCarrito);
+
+
 function finalizarCompra() {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
@@ -98,7 +111,7 @@ function finalizarCompra() {
 
   alert(`Monto a pagar: $${totalCompra.toFixed(2)}`);
 
-  
+
   mensajeContainer.textContent = "¡GRACIAS POR COMPRAR EN RASH SPORTS!";
   mensajeContainer.classList.remove("oculto"); 
   finalizarCompraButton.classList.add("oculto"); 
