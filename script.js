@@ -95,8 +95,10 @@ function limpiarCarrito() {
   actualizarCarrito();
   guardarEnStorage();
   finalizarCompraButton.classList.add("oculto");
-  mensajeContainer.classList.add("oculto"); 
-}
+  mensajeContainer.classList.add("oculto");
+  carritoContainer.innerHTML = "";
+} 
+
 
 limpiarCarritoButton.addEventListener("click", limpiarCarrito);
 
