@@ -93,8 +93,12 @@ function finalizarCompra() {
     alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
     return;
   }
-
+ 
   let totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
+
+  alert(`Monto a pagar: $${totalCompra.toFixed(2)}`);
+
+  
   mensajeContainer.textContent = "¡GRACIAS POR COMPRAR EN RASH SPORTS!";
   mensajeContainer.classList.remove("oculto"); 
   finalizarCompraButton.classList.add("oculto"); 
