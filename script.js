@@ -83,6 +83,7 @@ totalContainer.textContent = `Total: $${total.toFixed(2)}`;
 function agregarAlCarrito(index) {
 let producto = indumentariaDeportiva[index];
 if (producto.stock > 0) {
+  
   carrito.push(producto);
   producto.stock--;
   actualizarCarrito();
@@ -107,13 +108,13 @@ limpiarCarritoButton.addEventListener("click", limpiarCarrito);
 
 function finalizarCompra() {
 if (carrito.length === 0) {
-  alert("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
+  mostrarMensaje("Tu carrito está vacío. Agrega productos antes de finalizar la compra.");
   return;
 }
 
 let totalCompra = carrito.reduce((total, producto) => total + producto.precio, 0);
 
-alert(`Monto a pagar: $${totalCompra.toFixed(2)}`);
+mostrarMensaje(`Monto a pagar: $${totalCompra.toFixed(2)}`);
 
 
 mensajeContainer.textContent = "¡GRACIAS POR COMPRAR EN RASH SPORTS!";
@@ -122,6 +123,11 @@ finalizarCompraButton.classList.add("oculto");
 carrito = []; 
 actualizarCarrito();
 guardarEnStorage();
+}
+
+function mostrarMensaje(mensaje) {
+  let mensajeElement = document.getElementById("mensaje");
+  mensajeElement.textContent = mensaje;
 }
 
 function guardarEnStorage() {
