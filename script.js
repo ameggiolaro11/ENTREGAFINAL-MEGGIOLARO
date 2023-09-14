@@ -4,56 +4,56 @@ let indumentariaDeportiva = [
     categoria: "Ropa",
     precio: 29.999,
     stock: 10,
-    imagen: "../images/boca.jpeg"
+    imagen: "./images/boca.jpeg"
   },
   {
     nombre: "Botines TOTAL 90",
     categoria: "Calzado",
     precio: 79.000,
     stock: 35,
-    imagen: "../images/total90.jpg"
+    imagen: "./images/total90.jpg"
   },
   {
       nombre: "Camiseta San Lorenzo",
       categoria: "Ropa",
       precio: 29.999,
       stock: 25,
-      imagen: "../images/casla.jpg"
+      imagen: "./images/casla.jpg"
   },
   {
       nombre: "Camiseta Banfield",
       categoria: "Ropa",
       precio: 29.999,
       stock: 51,
-      imagen: "../images/banfield.jpg"
+      imagen: "./images/banfield.jpg"
     },
     {
       nombre: "Botines papi fulbo",
       categoria: "Calzado",
       precio: 19.000,
       stock: 5,
-      imagen: "../images/papi.jpg"
+      imagen: "./images/papi.jpg"
     },
     {
       nombre: "Short Boca Juniors",
       categoria: "Ropa",
       precio: 29.000,
       stock: 17,
-      imagen: "../images/boquita.jpg"
+      imagen: "./images/boquita.jpg"
     },
     {
       nombre: "Ojotas D10S",
       categoria: "Calzado",
       precio: 179.000,
       stock: 10,
-      imagen: "../images/d10s.jpeg"
+      imagen: "./images/d10s.jpeg"
     },
     {
       nombre: "Buzo entrenamiento Argentina",
       categoria: "Ropa",
       precio: 109.000,
       stock: 58,
-      imagen: "../images/argentina.jpg"
+      imagen: "./images/argentina.jpg"
     },
 ];
 let productosContainer = document.getElementById("productos-container");
