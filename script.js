@@ -115,8 +115,10 @@ function limpiarCarrito() {
 }
 
 function mostrarMensaje(mensaje) {
-  let mensajeElement = document.getElementById("mensaje");
-  mensajeElement.textContent = mensaje;
+  swal({
+    text: mensaje,
+    icon: "success",
+  });
 }
 
 function cargarProductos() {
@@ -166,7 +168,7 @@ cargarDesdeStorage();
 
 
 finalizarCompraButton.addEventListener("click", finalizarCompra);
-limpiarCarrito.addEventListener("click", limpiarCarrito);
+limpiarCarritoButton.addEventListener("click", limpiarCarrito);
 
 function cargarDatosDesdeJSONLocal() {
   return fetch('ruta/a/tu/json.json')
