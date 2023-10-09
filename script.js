@@ -62,6 +62,7 @@ let totalContainer = document.getElementById("total-container");
 let finalizarCompraButton = document.getElementById("finalizar-compra");
 let mensajeContainer = document.getElementById("mensaje-container");
 let itemsContainer = document.getElementById("items-container");
+let limpiarCarritoButton = document.getElementById("limpiar-carrito");
 
 let carrito = [];
 
@@ -107,6 +108,7 @@ function finalizarCompra() {
 }
 
 function limpiarCarrito() {
+  
   carrito.length = 0;
   actualizarCarrito();
   guardarEnStorage();
@@ -116,7 +118,7 @@ function limpiarCarrito() {
 
 function mostrarMensaje(mensaje) {
   swal({
-    text: mensaje,
+    text: mensaje, 
     icon: "success",
   });
 }
@@ -165,26 +167,25 @@ function cargarDesdeStorage() {
 
 cargarProductos();
 cargarDesdeStorage();
+cargarDatosDesdeFuenteExterna();
 
 
 finalizarCompraButton.addEventListener("click", finalizarCompra);
 limpiarCarritoButton.addEventListener("click", limpiarCarrito);
 
-function cargarDatosDesdeJSONLocal() {
-  return fetch('ruta/a/tu/json.json')
+function cargarDatosDesdeFuenteExterna() {
+  fetch('https://api-ejemplo.com/data') 
     .then(response => {
       if (!response.ok) {
-        throw new Error('No se pudo cargar el JSON local');
+        throw new Error('No se pudo cargar la información.');
       }
       return response.json();
     })
     .then(data => {
-      
-      console.log('Datos cargados desde JSON local:', data);
-      
+     
+      console.log('Datos cargados desde la fuente externa:', data);
     })
     .catch(error => {
-      console.error('Error al cargar datos desde JSON local:', error);
+      console.error('Error al cargar datos desde la fuente externa:', error);
     });
 }
-cargarDatosDesdeJSONLocal();
