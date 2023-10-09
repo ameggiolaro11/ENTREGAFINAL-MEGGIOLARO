@@ -167,25 +167,28 @@ function cargarDesdeStorage() {
 
 cargarProductos();
 cargarDesdeStorage();
-cargarDatosDesdeFuenteExterna();
+
 
 
 finalizarCompraButton.addEventListener("click", finalizarCompra);
 limpiarCarritoButton.addEventListener("click", limpiarCarrito);
 
-function cargarDatosDesdeFuenteExterna() {
-  fetch('https://api-ejemplo.com/data') 
+function cargarDatosDesdePokeAPI() {
+  const url = 'https://pokeapi.co/api/v2/pokemon/1';
+
+  fetch(url)
     .then(response => {
       if (!response.ok) {
-        throw new Error('No se pudo cargar la información.');
+        throw new Error('No se pudo cargar la información del Pokémon');
       }
       return response.json();
     })
     .then(data => {
-     
-      console.log('Datos cargados desde la fuente externa:', data);
+      console.log('Datos del Pokémon:', data);
     })
     .catch(error => {
-      console.error('Error al cargar datos desde la fuente externa:', error);
+      console.error('Error al cargar datos desde la PokeAPI:', error);
     });
 }
+
+cargarDatosDesdePokeAPI();
